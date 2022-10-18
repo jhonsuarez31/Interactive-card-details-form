@@ -1,15 +1,13 @@
 import {Create} from './components/Create.js'
 
 import './App.css';
-import { Card } from './components/Card.js';
-
 
 function App() {
+
+
   return (
-    <div className='wrapper' >
-        <Card/>
+    <div className='wrapper' >      
         <Create/>
-   
     </div>
   );
 }
