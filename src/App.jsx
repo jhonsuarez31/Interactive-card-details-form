@@ -1,4 +1,4 @@
-import {Create} from './components/Create.js'
+import {Create} from './components/Create.jsx'
 
 import './App.css';
 

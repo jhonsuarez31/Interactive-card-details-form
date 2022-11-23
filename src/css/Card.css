@@ -67,12 +67,12 @@
     
 }
 
-@media (max-width: 1402px) {
+@media (max-width: 1441px) {
     .image-conatiner{
         min-width: 34.5% !important;
     }
     .card_conatiner{
-        top: 11.5rem !important;
+        top: 11.4rem !important;
         left: 10.4rem;
     }
     .card_back{
@@ -81,7 +81,7 @@
         
     }
     .card_cvc_{
-        bottom: 20.6rem;
+        bottom: 18.8rem;
         left: 18.6rem;
     }
     
@@ -98,14 +98,6 @@
     .image{
         background-image: url('../image/bg-main-mobile.png');
     }
-    .card_conatiner{
-        width: 0;
-        height: 0;
-        padding: 1px;
-        position: absolute;
-        top: 0;
-        left: 0;
-
-    }
+  
     
 }

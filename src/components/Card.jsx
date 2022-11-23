@@ -5,6 +5,8 @@ import bg_card_back from "../image/bg-card-back.png";
 import card_logo from "../image/card-logo.svg";
 
 export const Card = ({ username, cardNumber, cardDD, cardMM, cardCVC }) => {
+
+
   return (
     <div className="image-conatiner" >
       <div className="image">

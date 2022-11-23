@@ -19,5 +19,9 @@ body{
   max-height: 100vh;
 }
 
-
+@media (max-width: 376px){
+ .wrapper{
+  flex-direction: column;
+ } 
+}
 

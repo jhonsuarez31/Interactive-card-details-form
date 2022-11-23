@@ -1,26 +1,48 @@
+
 import { useEffect } from "react";
 import "../css/Create.css";
 import { useForm } from "../Hook/useForm";
 import { Card } from "./Card";
 
 export const Create = () => {
-  const { Form, onInputChangue } = useForm({
+  const { Form, onInputChangue,  onSubmit,onResetForm   } = useForm({
     username: "Jane Appleseed ",
     numberCard: "0000 0000 0000 0000",
     cardMM: "00",
     cardYY: "00",
     cardCVC: "123",
   });
-  let { username, numberCard, cardMM, cardYY, cardCVC } = Form;
+ 
+  const { username, numberCard, cardMM, cardYY, cardCVC } =Form;
   
 
-  if(username.length < 1){
-    username='Jane Appleseed'
-  }
+  useEffect(() => {
+    if(username.length<1)   onResetForm('username')
+  
+  }, [username])
 
+  useEffect(() => {
+    if(numberCard.length<1)onResetForm('numberCard')
+  }, [numberCard])
+  
+  useEffect(() => {
+    if(cardMM.length<1) onResetForm('cardMM')
+  }, [cardMM])
+
+
+  useEffect(() => {
+    if(cardYY.length<1) onResetForm('cardYY')
+  }, [cardYY])
+
+
+  useEffect(() => {
+    if(cardCVC.length<1) onResetForm('cardCVC')
+   
+  }, [cardCVC])
+  
+  
   return (
     <>
-    
       <Card
         username={username}
         cardNumber={numberCard}
@@ -30,18 +52,20 @@ export const Create = () => {
       />
       <div className="container">
         <div className="form-container">
-          <form id="forma">
+          <form id="forma" onSubmit={onSubmit}>
             <div className="parent">
               <label className="label-form">CARDHOLDERNAME</label>
               <input
                 className="input-form"
                 id="name"
                 name="username"
-                type="text"
                 placeholder="e.g  Jane Appleseed"
+                type="text"
                 maxLength={30}
-                onChange={onInputChangue}
-              ></input>
+                onChange={(e) => onInputChangue(e)}
+                autoComplete="off"
+              />
+
             </div>
             <div className="parent">
               <label className="label-form">CARD NUMBER</label>
@@ -52,9 +76,9 @@ export const Create = () => {
                 placeholder="e.g  1234 5678 9123 0000"
                 maxLength={16}
                 minLength={16}
-                onChange={onInputChangue}
-    
-              ></input>
+                onChange={(e) => onInputChangue(e)}
+                autoComplete="off"
+              />
             </div>
 
             <div className="content-dos">
@@ -68,8 +92,9 @@ export const Create = () => {
                     maxLength={2}
                     minLength={1}
                     name="cardMM"
-                    onChange={onInputChangue}
-                  ></input>
+                    onChange={(e) => onInputChangue(e)}
+                    autoComplete="off"
+                  ></input> 
                 </div>
                 <div className="parent">
                   <label className="label-form">(MM/YY)</label>
@@ -80,7 +105,8 @@ export const Create = () => {
                     maxLength={2}
                     minLength={1}
                     name={"cardYY"}
-                    onChange={onInputChangue}
+                    onChange={(e) => onInputChangue(e)}
+                    autoComplete="off"
                   ></input>
                 </div>
               </div>
@@ -94,16 +120,14 @@ export const Create = () => {
                     placeholder="e.g  123"
                     maxLength={3}
                     minLength={3}
-
-                    onChange={onInputChangue}
+                    onChange={(e) => onInputChangue(e)}
+                    autoComplete="off"
                   ></input>
                 </div>
               </div>
             </div>
-            <button
-              className="btn-confirm"
-              type="submit"
-            >
+
+            <button className="btn-confirm" type="submit">
               Confirm
             </button>
           </form>
