@@ -21,6 +21,7 @@
 .parent {
     display: flex;
     flex-direction: column;
+    margin: 0.5em 0;
 }
 
 .date {
@@ -40,9 +41,6 @@
 
 }
 
-.parent {
-    margin: 0.9em 0;
-}
 
 .label-form {
     font-size: 11px;
@@ -81,4 +79,9 @@
     cursor: pointer;
     border: none;
     border-radius: 0.3em;
+}
+.error{
+    margin-top: 3px;
+    color: red;
+    font-size: 0.9rem;
 }

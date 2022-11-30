@@ -1,8 +1,10 @@
 import  { useState } from 'react'
 
-export const useForm = (initialForm) => {
+export const useForm = (initialForm , validateForm) => {
   
     const [Form, setForm] = useState(initialForm)
+    const [Error, setError] = useState({})
+    const [loading, setLoading] = useState (false)
    
     
     const onInputChangue = (event) =>{
@@ -11,7 +13,11 @@ export const useForm = (initialForm) => {
             ...Form,
             [name]: value
         })
-
+        
+    }
+    const onBlur = (event) =>{
+        onInputChangue(event)
+        setError(validateForm(Form))
     }
     const onSubmit= (event)=>{
         
@@ -32,9 +38,11 @@ export const useForm = (initialForm) => {
     return {
     ...Form,    
     Form,
+    Error,
+    loading,
     onInputChangue, 
     onResetForm,
     onSubmit,
-        
+    onBlur    
     }
 }
