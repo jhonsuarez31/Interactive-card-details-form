@@ -1,48 +1,56 @@
-import  { useState } from 'react'
+import { useEffect, useState } from "react";
 
-export const useForm = (initialForm , validateForm) => {
+export const useForm = (initialForm, validateForm) => {
+  const [Form, setForm] = useState(initialForm);
+  const [Error, setError] = useState({});
+  const [exito, setexito] = useState(false);
+
+  const onInputChangue = (event) => {
+    const { name, value } = event.target;
+
+    setForm({
+      ...Form,
+      [name]: value,
+    });
+  };
   
-    const [Form, setForm] = useState(initialForm)
-    const [Error, setError] = useState({})
-    const [loading, setLoading] = useState (false)
-   
-    
-    const onInputChangue = (event) =>{
-        const {name, value} = event.target
-        setForm({
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    setError(validateForm(Form));
+    setexito(true)
+  };
+
+  
+  
+  
+  
+  const onResetForm = (input) => {
+    for (const key in initialForm) {
+      if (Object.hasOwnProperty.call(initialForm, key)) {
+        if (input === key) {
+          setForm({
             ...Form,
-            [name]: value
-        })
-        
-    }
-    const onBlur = (event) =>{
-        onInputChangue(event)
-        setError(validateForm(Form))
-    }
-    const onSubmit= (event)=>{
-        
-    }
-    const onResetForm = (input) =>{
-                for (const key in initialForm) {
-            if (Object.hasOwnProperty.call(initialForm, key)) {
-                if( input === key){
-                    setForm({
-                        ...Form,
-                        [key]:initialForm[key]
-                       })
-                }
-                              
-            }
+            [key]: initialForm[key],
+          });
         }
+      }
     }
-    return {
-    ...Form,    
+  };
+
+  const reset = () =>{
+    setForm(initialForm)
+    setError({})
+    setexito(false)
+  }
+  return {
+    ...Form,
     Form,
     Error,
-    loading,
-    onInputChangue, 
+    exito,
+    reset,
+    onInputChangue,
     onResetForm,
     onSubmit,
-    onBlur    
-    }
-}
+  };
+};

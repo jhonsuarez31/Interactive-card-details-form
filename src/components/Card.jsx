@@ -5,8 +5,6 @@ import bg_card_back from "../image/bg-card-back.png";
 import card_logo from "../image/card-logo.svg";
 
 export const Card = ({ username, cardNumber, cardDD, cardMM, cardCVC }) => {
-
-
   return (
     <div className="image-conatiner" >
       <div className="image">
@@ -14,7 +12,7 @@ export const Card = ({ username, cardNumber, cardDD, cardMM, cardCVC }) => {
           <div className="card_front">
             <img src={bg_card_front} alt="" />
             <img className="card_logo" src={card_logo} alt="" />
-            <h2 className="card_number">{cardNumber}</h2>
+            <h2 className="card_number">{cardNumber.replace(/\s/g,'').replace(/([0-9]{4})/g, '$1 ').trim()}</h2>
             <div className="card_front_footer">
               <h4 className="card_name_">{username}</h4>
               <h4>

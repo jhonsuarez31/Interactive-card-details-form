@@ -32,7 +32,7 @@
 .input-form {
     height: 1.5em;
     width: 95%;
-    border: 1px solid hsl(270, 3%, 87%);
+    border: 1px solid hsl(150, 3%, 87%);
     padding: 0.42em 0.6em;
     border-radius: 0.3em;
     font-size: 1em;
@@ -85,3 +85,6 @@
     color: red;
     font-size: 0.9rem;
 }
+
+
+
